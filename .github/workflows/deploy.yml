@@ -45,6 +45,7 @@ jobs:
             .nojekyll \
             board/index.html \
             math/index.html \
+            math/imo-puzzle-1/index.html \
             physics/index.html \
             physics/ipho-puzzle-1/index.html \
             physics/ipho-puzzle-1/writeup/index.html \
