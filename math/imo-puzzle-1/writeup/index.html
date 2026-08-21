@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writeup — IMO Puzzle 1 — Number Theory — Olympiads</title>
+  <meta name="description" content="Official writeup for IMO Puzzle 1: Number Theory. Vieta jumping proof, reusable lesson, and Mastery Problem 1A.">
+  <meta name="theme-color" content="#dfe6ee">
+  <link rel="canonical" href="https://mingkaibuilds.github.io/Olympiads/math/imo-puzzle-1/writeup/">
+  <link rel="icon" href="/Olympiads/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Writeup — IMO Puzzle 1 — Number Theory">
+  <meta property="og:description" content="Official Vieta jumping proof, reusable lesson, and Mastery Problem 1A.">
+  <meta property="og:url" content="https://mingkaibuilds.github.io/Olympiads/math/imo-puzzle-1/writeup/">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Manrope:wght@400;500;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+  <link rel="stylesheet" href="/Olympiads/assets/css/site.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+  <script defer src="/Olympiads/assets/js/math.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="/Olympiads/">
+        <img src="/Olympiads/assets/img/mark.svg" width="38" height="38" alt="">
+        <span class="brand__text">
+          <span class="brand__name">Olympiads</span>
+          <span class="brand__tag">IMO · IPhO</span>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="/Olympiads/board/">Board</a>
+        <a href="/Olympiads/math/" aria-current="page">Math</a>
+        <a href="/Olympiads/physics/">Physics</a>
+        <a href="/Olympiads/archive/">Archive</a>
+        <a href="/Olympiads/how/">How</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="page-head">
+      <div class="wrap wrap--narrow">
+        <p class="kicker">Writeup · IMO Puzzle 1</p>
+        <h1>Number Theory</h1>
+        <p>Official writeup for the problem posted <time datetime="2026-08-20">20 August 2026</time>. The statement is separate, so a solver can sit the problem first.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="wrap wrap--narrow prose">
+        <div class="writeup-banner">
+          <p>This page is the solution. If you have not yet tried the problem, open the <a href="/Olympiads/math/imo-puzzle-1/">statement</a> instead.</p>
+        </div>
+
+        <p>We prove that if \(\dfrac{a^2+b^2}{ab+1}=k\in\mathbb{Z}\), then \(k\) is a perfect square. That is,</p>
+        \[
+          a^2+b^2=k(ab+1). \tag{1}
+        \]
+        <p>The central idea is Vieta jumping.</p>
+
+        <h2>1. A minimal counterexample</h2>
+        <p>Assume a counterexample exists: \(k\) is not a square. Among positive integer solutions \((a,b)\) giving a nonsquare \(k\), minimize \(a+b\). By symmetry, take \(a\ge b\). Then \(k\ge 2\).</p>
+        <p>If \(b=1\), then \(a^2+1=k(a+1)\), so \(a+1\) divides \(a^2+1\). Since \(a^2+1=(a+1)(a-1)+2\), we have \(a+1\mid 2\). With \(a\ge 1\) this forces \(a=1\) and \(k=1\), a square. Contradiction. Thus \(b\ge 2\).</p>
+
+        <h2>2. The other root</h2>
+        <p>The equation is quadratic in \(a\):</p>
+        \[
+          a^2 - kba + (b^2-k)=0.
+        \]
+        <p>Write \(f(x)=x^2-kbx+(b^2-k)\). One root is \(x=a\). Call the other root \(c\).</p>
+        <p>Vieta: \(a+c=kb\), so \(c=kb-a\in\mathbb{Z}\). The product is</p>
+        \[
+          ac=b^2-k. \tag{2}
+        \]
+        <p>We need \(0&lt;c&lt;b\).</p>
+
+        <h2>3. Prove \(c&gt;0\)</h2>
+        <p>If \(b^2=k\), then \(k\) is a square, a contradiction. So \(b^2\neq k\).</p>
+        <p>Suppose \(b^2&lt;k\). Then \(ac&lt;0\). Since \(a&gt;0\), we have \(c&lt;0\). Write \(c=-d\) with \(d\ge 1\). Then</p>
+        \[
+          k=ad+b^2 \ge a+b^2 &gt; a. \tag{3}
+        \]
+        <p>But</p>
+        \[
+          k=\frac{a^2+b^2}{ab+1} &lt; \frac{a^2+b^2}{ab} = \frac{a}{b}+\frac{b}{a}.
+        \]
+        <p>Since \(b\ge 2\) and \(a\ge b\), we have \(a/b \le a/2\) and \(b/a \le 1\), so</p>
+        \[
+          k &lt; \tfrac{a}{2}+1 \le a. \tag{4}
+        \]
+        <p>(3) and (4) contradict. Therefore \(b^2&gt;k\), hence \(ac&gt;0\). With \(a&gt;0\) we get \(c&gt;0\).</p>
+
+        <h2>4. Prove \(c&lt;b\)</h2>
+        <p>\(f(0)=b^2-k&gt;0\). Also \(f(b)=(2-k)b^2-k\). Since \(k\ge 2\), we have \(f(b)&lt;0\). So one root lies strictly between \(0\) and \(b\). The roots are \(a\) and \(c\), and \(a\ge b\), so \(0&lt;c&lt;b\).</p>
+
+        <h2>5. The jump</h2>
+        <p>Since \(c\) is a root, \(b^2+c^2=k(bc+1)\). Thus \((b,c)\) is another positive integer solution for the same nonsquare \(k\). From \(0&lt;c&lt;b\le a\) we have \(b+c &lt; a+b\), contradicting minimality of \(a+b\).</p>
+        <p>Therefore no nonsquare \(k\) exists. QED.</p>
+
+        <div class="trick">
+          <h2>Lesson</h2>
+          <p>Diophantine + quadratic + minimality \(\Rightarrow\) descent.</p>
+          <p>Reusable sequence: equation \(F(a,b,k)=0\); minimize a bad solution; order \(a\ge b\); monic quadratic in the larger variable; Vieta other root; prove it is integer, positive, and smaller; replace \((a,b)\to(b,c)\); contradict minimality. The olympiad work is proving \(0&lt;c&lt;b\).</p>
+        </div>
+
+        <div class="mastery">
+          <h2>Mastery Problem 1A</h2>
+          <p>A follow-on exercise, not IMO Puzzle 2. No solution is given here.</p>
+          <p>Let \(a\), \(b\) be positive integers such that \(ab\) divides \(a^2+b^2+1\). Prove that \(\dfrac{a^2+b^2+1}{ab}=3\). Equivalently, if \(a^2+b^2+1=kab\), prove that \(k=3\).</p>
+          <p>Do not search for another technique. The proof must identify: the minimal object; the quadratic; the second root; why it is an integer; why it is positive; why it is strictly smaller; what the descent reaches; and why the terminal case forces \(k=3\).</p>
+        </div>
+
+        <nav class="sheet-nav" aria-label="Around this writeup">
+          <a href="/Olympiads/math/imo-puzzle-1/">Problem statement</a>
+          <a href="/Olympiads/board/">Daily board</a>
+          <a href="/Olympiads/archive/">Archive</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <div>
+        <h2>This site</h2>
+        <p>IMO and IPhO problem-solving in public. Daily puzzles live on the board.</p>
+      </div>
+      <div>
+        <h2>Author</h2>
+        <p>Mikail Stewart / Mingkai / 明凯<br>Princeton CS ’27</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:ms3554@princeton.edu">ms3554@princeton.edu</a></li>
+          <li><a href="https://github.com/MingkaiBuilds">GitHub · MingkaiBuilds</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
