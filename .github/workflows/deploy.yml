@@ -1,0 +1,77 @@
+name: Deploy Olympiads to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Registers Pages metadata before the first artifact upload.
+      # Required for a repository that has not hosted a Pages site yet.
+      # Skipped on pull requests so a missing Pages site cannot fail CI.
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Assemble static site
+        run: |
+          mkdir -p _site
+          cp -a index.html 404.html favicon.svg .nojekyll _site/
+          cp -a assets board math physics archive how _site/
+
+      - name: Check required paths and base prefix
+        run: |
+          for p in \
+            index.html \
+            404.html \
+            favicon.svg \
+            .nojekyll \
+            board/index.html \
+            math/index.html \
+            physics/index.html \
+            archive/index.html \
+            how/index.html \
+            assets/css/site.css \
+            assets/img/mark.svg
+          do
+            test -f "_site/$p"
+          done
+          if grep -R --include='*.html' -E 'href="/|src="/' _site | grep -v '/Olympiads/'; then
+            echo "Found a root-relative link that is not under /Olympiads/" >&2
+            exit 1
+          fi
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
