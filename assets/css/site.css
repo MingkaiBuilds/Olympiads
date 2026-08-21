@@ -711,6 +711,22 @@ nav[aria-label="Primary"] a[aria-current="page"] {
   background: var(--phys-wash);
 }
 
+.lesson {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  padding: 1.05rem 1.15rem;
+  background: var(--math-wash);
+  border: 1px solid var(--line);
+}
+
+.lesson p {
+  margin: 0;
+}
+
+.lesson p + p {
+  margin-top: 0.7rem;
+}
+
 .central {
   border-left: 3px solid var(--seal);
 }

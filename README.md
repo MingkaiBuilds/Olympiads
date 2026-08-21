@@ -9,13 +9,14 @@ This repository *is* the website. It is not a page on the personal hub, autonoet
 ## What is here
 
 - **Home** — states IMO and IPhO; shows the current board
-- **Board** — two slots, Mathematics / IMO (empty) and Physics / IPhO (IPhO Puzzle 1 posted)
+- **Board** — two slots: Mathematics / IMO (IMO Puzzle 1 posted) and Physics / IPhO (IPhO Puzzle 1 posted)
 - **Math** and **Physics** — track pages
+- **IMO Puzzle 1** — Number Theory (`math/imo-puzzle-1/`); no writeup
 - **IPhO Puzzle 1** — The Vanishing Contact (`physics/ipho-puzzle-1/`), with a separate writeup
-- **Archive** — first row: 2026-08-20, IPhO, The Vanishing Contact, writeup published
+- **Archive** — 2026-08-20 IMO Number Theory (no writeup); 2026-08-20 IPhO The Vanishing Contact (writeup published)
 - **How** — a problem is posted; a writeup appears later only if it earns one
 
-The mathematics slot stays empty until an IMO problem is actually posted. Do not invent statements, numbers, or solutions.
+Do not invent statements, numbers, or solutions. The IMO writeup is held and is not on this site.
 
 ## Base path
 
