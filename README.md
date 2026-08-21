@@ -9,12 +9,13 @@ This repository *is* the website. It is not a page on the personal hub, autonoet
 ## What is here
 
 - **Home** — states IMO and IPhO; shows the current board
-- **Board** — two slots, Mathematics / IMO and Physics / IPhO, structured so a problem can be posted later
+- **Board** — two slots, Mathematics / IMO (empty) and Physics / IPhO (IPhO Puzzle 1 posted)
 - **Math** and **Physics** — track pages
-- **Archive** — empty until the first problem is posted
+- **IPhO Puzzle 1** — The Vanishing Contact (`physics/ipho-puzzle-1/`), with a separate writeup
+- **Archive** — first row: 2026-08-20, IPhO, The Vanishing Contact, writeup published
 - **How** — a problem is posted; a writeup appears later only if it earns one
 
-The shell does not invent problem statements, answers, or writeups. Empty slots stay empty.
+The mathematics slot stays empty until an IMO problem is actually posted. Do not invent statements, numbers, or solutions.
 
 ## Base path
 
@@ -44,7 +45,7 @@ Then open `http://127.0.0.1:8080/Olympiads/`.
 
 ## Posting a problem later
 
-Fill the reserved slot on `board/index.html` (and the matching track page). Move the previous current problem into `archive/index.html`. Do not add a writeup unless the problem earns one.
+Give the problem its own statement page (and a writeup page only if it earns one). Fill the reserved slot on `board/index.html`, the home board, and the matching track page. Add an archive row. Leave the other track empty if nothing has been posted there.
 
 ## Author
 

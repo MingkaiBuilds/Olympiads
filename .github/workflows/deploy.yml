@@ -46,6 +46,9 @@ jobs:
             board/index.html \
             math/index.html \
             physics/index.html \
+            physics/ipho-puzzle-1/index.html \
+            physics/ipho-puzzle-1/writeup/index.html \
+            assets/js/math.js \
             archive/index.html \
             how/index.html \
             assets/css/site.css \

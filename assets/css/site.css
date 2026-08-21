@@ -385,6 +385,29 @@ nav[aria-label="Primary"] a[aria-current="page"] {
   max-width: 28rem;
 }
 
+.well--filled {
+  justify-content: flex-start;
+}
+
+.well--filled p {
+  max-width: 36rem;
+}
+
+.slot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.05rem;
+  margin-top: 0.85rem;
+}
+
+.slot-actions a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 .slot__meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -597,6 +620,123 @@ nav[aria-label="Primary"] a[aria-current="page"] {
 
 .prose h2 {
   margin: 2rem 0 0.7rem;
+}
+
+.prose h3 {
+  margin: 1.4rem 0 0.5rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.prose ol {
+  padding-left: 1.2rem;
+}
+
+.prose .katex-display {
+  margin: 1rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1.2rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 720px) {
+  .facts {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.facts li {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.facts strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.rules,
+.extension,
+.trick,
+.mastery,
+.central,
+.writeup-banner {
+  margin: 0 0 1.5rem;
+  padding: 1.05rem 1.15rem;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+}
+
+.rules p,
+.extension p,
+.trick p,
+.mastery p,
+.central p,
+.writeup-banner p {
+  margin: 0;
+}
+
+.rules p + p,
+.extension p + p,
+.trick p + p,
+.mastery p + p,
+.central p + p,
+.writeup-banner p + p {
+  margin-top: 0.7rem;
+}
+
+.extension,
+.mastery {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.extension {
+  background: var(--phys-wash);
+}
+
+.central {
+  border-left: 3px solid var(--seal);
+}
+
+.trick {
+  background: var(--seal-wash);
+}
+
+.writeup-banner {
+  background: var(--phys-wash);
+}
+
+.sheet-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.1rem;
+  margin: 1.6rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stars {
+  letter-spacing: 0.08em;
+  color: var(--phys);
 }
 
 .colophon-box {
